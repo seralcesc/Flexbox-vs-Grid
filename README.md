@@ -50,3 +50,36 @@ La estructura del código sigue una filosofía modular, limpia y sin anidamiento
 ├── manifest.webmanifest     # Archivo de configuración PWA
 └── README.md                # Documentación del repositorio
 ```
+
+---
+
+## 🛠️ Instalación y Visualización Local
+
+Al tratarse de un desarrollo basado en capacidades nativas del navegador, **no requiere ningún paso de compilación ni instalación de dependencias de npm**.
+
+1. **Clona este repositorio** en tu máquina local:
+
+   ```bash
+   git clone https://github.com/seralcesc/Flexbox-vs-Grid.git
+   ```
+
+2. **Entra en el directorio** del proyecto:
+
+   ```bash
+   cd Flexbox-vs-Grid
+   ```
+
+3. Abre el archivo `index.html` en tu navegador preferido o utiliza la extensión **Live Server** de Visual Studio Code para disfrutar de recarga en tiempo real.
+
+---
+
+## 👤 Autor
+
+- **Sergio Alcántara** - Estudiante de 1º de DAM (Desarrollo de Aplicaciones Multiplataforma)
+- **GitHub**: [@seralcesc](https://github.com/seralcesc)
+
+---
+
+## 📄 Licencia
+
+Este proyecto es de **uso libre** con fines educativos y académicos.
