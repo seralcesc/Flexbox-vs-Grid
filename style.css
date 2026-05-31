@@ -1,5 +1,4 @@
-:root,
-[data-theme="dark"] {
+:root {
   /* Fondos modo oscuro */
   --bg-main: #7026fb0f;
   --bg-secondary: #1c2541;
@@ -90,15 +89,16 @@ p {
 body {
   font-size: 1.6rem;
   font-family: var(--font-family);
+  /* Degradado */
   background-image: linear-gradient(
     135deg,
     var(--body-bg-1) 0%,
     var(--body-bg-2) 50%,
     var(--body-bg-3) 100%
   );
+  background-attachment: fixed; /* El degradado cubre todo el alto de la pantalla */
+  min-height: 100vh;
   line-height: 1.5;
-  /* Suaviza el cambio de fondo al activar el modo claro (0.4 segundos) */
-  transition: background-image 0.4s ease;
 }
 
 /* HEADER */
