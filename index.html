@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="es-ES">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="color-scheme" content="light dark" />
+
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+
+        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+        } else {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
+
+    <link
+      rel="preconnect"
+      href="[https://fonts.googleapis.com](https://fonts.googleapis.com)"
+    />
+    <link
+      rel="preconnect"
+      href="[https://fonts.gstatic.com](https://fonts.gstatic.com)"
+      crossorigin
+    />
+
+    <link rel="stylesheet" href="style.css" fetchpriority="high" />
+    <script src="script.js" defer></script>
+
+    <title>Flex vs. Grid | S.Alcántara</title>
+    <meta
+      name="description"
+      content="Práctica orientada a potenciar habilidades CSS."
+    />
+
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta name="theme-color" content="#0d0d0d" />
+
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="[https://tudominio.com/](https://tudominio.com/)"
+    />
+    <meta property="og:title" content="Flex vs. Grid | S.Alcántara" />
+    <meta
+      property="og:description"
+      content="Estructuras web semánticas avanzadas, optimización de velocidad y estrategias de retención del usuario en 2026."
+    />
+    <meta
+      property="og:image"
+      content="[https://tudominio.com/assets/og-image-principal.jpg](https://tudominio.com/assets/og-image-principal.jpg)"
+    />
+    <meta
+      property="og:image:alt"
+      content="Vista previa de nuestra plataforma web optimizada"
+    />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- =========================================================================
+       7. DATOS ESTRUCTURADOS / SCHEMA (GEO & AI Trust Signals)
+       ========================================================================= -->
+    <script type="application/ld+json">
+      {
+        "@context": "[https://schema.org](https://schema.org)",
+        "@type": "WebSite",
+        "name": "Tu Marca",
+        "url": "[https://tudominio.com/](https://tudominio.com/)",
+        "description": "Plataforma de conversión digital optimizada para los estándares web del bienio 2025-2026.",
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tu Empresa",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "[https://tudominio.com/assets/logo.png](https://tudominio.com/assets/logo.png)"
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header class="header-bar">
+      <div class="logo">
+        <a href="#">HTML/CSS/JS</a>
+      </div>
+
+      <!-- Switch -->
+      <div class="theme-switch-wrapper">
+        <!-- Icono Sol -->
+        <svg
+          class="theme-icon sun-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="21.22" x2="5.64" y2="19.78"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+
+        <!-- Interruptor -->
+        <label class="theme-switch" for="checkbox-theme">
+          <input type="checkbox" id="checkbox-theme" />
+          <div class="slider"></div>
+        </label>
+
+        <!-- Icono Luna -->
+        <svg
+          class="theme-icon moon-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </div>
+
+      <nav class="menu">
+        <ul class="menu-list">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#flexbox">Flexbox</a></li>
+          <li><a href="#grid">Grid</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="hero-title">FLEXBOX vs. GRID</h1>
+        </div>
+      </section>
+
+      <section class="main-section" id="flexbox">
+        <h2 class="section-title">FlexBox</h2>
+        <div class="container-flexbox">
+          <article class="main-article">
+            <h3 class="article-title">Artículo 1</h3>
+            <div class="article-flexbox">
+              <section class="card-flexbox without-radius">
+                <h4 class="card-title">Card 1</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+              <section class="card-flexbox without-radius">
+                <h4 class="card-title">Card 2</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+              <section class="card-flexbox">
+                <h4 class="card-title">Card 3</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="main-article">
+            <h3 class="article-title">Artículo 2</h3>
+            <div class="article-flexbox">
+              <section class="card-flexbox without-radius">
+                <h4 class="card-title">Card 1</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+              <section class="card-flexbox without-radius">
+                <h4 class="card-title">Card 2</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+              <section class="card-flexbox">
+                <h4 class="card-title">Card 3</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+            </div>
+          </article>
+
+          <article class="main-article">
+            <h3 class="article-title">Artículo 3</h3>
+            <div class="article-flexbox">
+              <section class="card-flexbox without-radius">
+                <h4 class="card-title">Card 1</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+              <section class="card-flexbox without-radius">
+                <h4 class="card-title">Card 2</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+              <section class="card-flexbox">
+                <h4 class="card-title">Card 3</h4>
+                <p>Lorem ipsum...</p>
+              </section>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="main-section" id="grid">
+        <h2 class="section-title">Grid</h2>
+        <div class="container-grid">
+          <section class="card-grid el--1">
+            <h3 class="card-title">Card 1</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--2">
+            <h3 class="card-title">Card 2</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--3">
+            <h3 class="card-title">Card 3</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--4">
+            <h3 class="card-title">Card 4</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--5">
+            <h3 class="card-title">Card 5</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--6">
+            <h3 class="card-title">Card 6</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--7">
+            <h3 class="card-title">Card 7</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--8">
+            <h3 class="card-title">Card 8</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--9">
+            <h3 class="card-title">Card 9</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--10">
+            <h3 class="card-title">Card 10</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--11">
+            <h3 class="card-title">Card 11</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+          <section class="card-grid el--12">
+            <h3 class="card-title">Card 12</h3>
+            <p>Lorem ipsum...</p>
+          </section>
+        </div>
+      </section>
+    </main>
+    <footer class="main-footer">
+      <div class="footer-container">
+        <p class="footer-copy">
+          &copy; 2026 Sergio Alcántara. Desarrollado con HTML, CSS y JS.
+        </p>
+        <div class="footer-links">
+          <a
+            href="https://github.com/seralcesc"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+          >
+            <svg
+              class="footer-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              ></path>
+            </svg>
+          </a>
+          <a href="mailto:tesio83@hotmail.com" aria-label="Contacto por Correo">
+            <svg
+              class="footer-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
