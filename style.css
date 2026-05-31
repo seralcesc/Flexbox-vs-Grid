@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-theme="dark"] {
   /* Fondos modo oscuro */
   --bg-main: #7026fb0f;
   --bg-secondary: #1c2541;
@@ -156,7 +157,15 @@ header {
 }
 
 .theme-switch input {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .slider {
@@ -213,7 +222,11 @@ header {
 .theme-switch input:not(:checked) ~ .moon-icon {
   opacity: 0.4;
 }
-
+/* Añade un indicador visual enfocado para usuarios que navegan con teclado (Tab) */
+.theme-switch input:focus-visible + .slider {
+  outline: 2px solid var(--color-text-secondary);
+  outline-offset: 2px;
+}
 /* MAIN */
 main {
   width: 100%;
