@@ -14,6 +14,7 @@
   --color-text-secondary: #ebc743;
   --color-text-shadow: 0 2px 20px #38bdf8b3;
   --color-links-hover: #ffffff;
+  --theme-icon: #ebc743;
 
   --radius: 1.2rem;
   --font-family: "Roboto", Arial, sans-serif;
@@ -43,6 +44,7 @@
   --color-text-main: #111a31;
   --color-text-secondary: #c79800;
   --color-text-shadow: 0 2px 20px #38bdf8b3;
+  --theme-icon: #000000;
 
   --body-bg-1: #f8fafc;
   --body-bg-2: #defcff9a;
@@ -122,15 +124,118 @@ header {
 .header-bar a:hover {
   color: var(--color-text-secondary);
 }
-.menu ul {
-  display: flex;
-  gap: 2rem;
-}
 .logo a {
   font-size: 1.5rem;
 }
-.menu a {
-  font-size: 1.5rem;
+
+.menu {
+  position: fixed;
+  top: 6rem;
+  right: 0;
+  bottom: 0;
+  width: 20rem;
+  background-color: var(--bg-secondary);
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  box-shadow: var(--shadow);
+  text-align: right;
+  z-index: 1001;
+
+  /* Animación de desplazamiento fluida */
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.menu.nav-open {
+  transform: translateX(0);
+}
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.menu-list a {
+  font-size: 2rem;
+  color: var(--color-text-main);
+}
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.hamburger-line {
+  position: relative;
+  width: 2.5rem;
+  height: 3px;
+  background-color: var(--header-text);
+  transition: background-color 0.3s ease;
+}
+.hamburger-line::before,
+.hamburger-line::after {
+  content: "";
+  position: absolute;
+  width: 2.5rem;
+  height: 3px;
+  background-color: var(--header-text);
+  transition:
+    transform 0.3s ease,
+    top 0.3s ease;
+}
+
+.hamburger-line::before {
+  top: -8px;
+}
+.hamburger-line::after {
+  top: 8px;
+}
+/* Animación: Transforma la hamburguesa en una X cuando el menú está abierto */
+.menu.nav-open ~ .menu-button .hamburger-line {
+  background-color: transparent;
+}
+.menu.nav-open ~ .menu-button .hamburger-line::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+.menu.nav-open ~ .menu-button .hamburger-line::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+@media (min-width: 48em) {
+  .menu-button {
+    display: none;
+  }
+
+  .menu {
+    position: static; /* Vuelve al flujo normal del header */
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: none;
+    transform: translateX(0); /* Siempre visible */
+
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .menu-list {
+    flex-direction: row;
+    gap: 3rem;
+  }
+
+  .menu-list a {
+    font-size: 1.6rem;
+    color: var(--header-text);
+  }
 }
 
 /* Selector selector versión clara/oscura */
@@ -143,7 +248,7 @@ header {
 .theme-icon {
   width: 1.8rem;
   height: 1.8rem;
-  color: var(--header-text);
+  color: var(--theme-icon);
   transition:
     opacity 0.3s ease,
     color 0.3s ease;
